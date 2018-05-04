@@ -4,6 +4,7 @@
   "description": "A minimal functional library for JavaScript humans.",
   "main": "index.js",
   "scripts": {
+    "precommit": "npm t",
     "test": "eslint --config .eslint.json **/*.js"
   },
   "repository": {
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/agzeri/ramdish#readme",
   "devDependencies": {
-    "eslint": "^4.19.1"
+    "eslint": "^4.19.1",
+    "husky": "^0.14.3"
   }
 }
