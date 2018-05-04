@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "precommit": "npm t",
-    "test": "eslint --config .eslint.json **/*.js"
+    "pretest": "eslint --config .eslint.json **/*.js",
+    "test": "mocha tests/**.js --require babel-register"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,9 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
     "eslint": "^4.19.1",
-    "husky": "^0.14.3"
+    "husky": "^0.14.3",
+    "mocha": "^5.1.1"
   }
 }
