@@ -1,0 +1,22 @@
+{
+  "name": "ramdish",
+  "version": "1.0.0",
+  "description": "A minimal functional library for JavaScript humans.",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint --config .eslint.json **/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agzeri/ramdish.git"
+  },
+  "author": "Mr R <@agzeri>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/agzeri/ramdish/issues"
+  },
+  "homepage": "https://github.com/agzeri/ramdish#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1"
+  }
+}
