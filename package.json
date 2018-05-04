@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "precommit": "npm t",
-    "pretest": "eslint --config .eslint.json **/*.js",
-    "test": "mocha tests/**.js --require babel-register"
+    "precoverage": "rimraf coverage",
+    "coverage": "nyc report --reporter=lcov --reporter=html --reporter=text-summary",
+    "pretest": "eslint --config .eslint.json src/*.js",
+    "test": "nyc mocha tests/**.js --require babel-register",
+    "posttest": "npm run -s coverage"
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,12 @@
     "chai": "^4.1.2",
     "eslint": "^4.19.1",
     "husky": "^0.14.3",
-    "mocha": "^5.1.1"
+    "mocha": "^5.1.1",
+    "nyc": "^11.7.1"
+  },
+  "nyc": {
+    "exclude": [
+      "tests/"
+    ]
   }
 }
