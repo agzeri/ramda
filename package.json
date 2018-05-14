@@ -1,0 +1,41 @@
+{
+  "name": "ramdish",
+  "version": "0.1.0",
+  "description": "A minimal functional library for JavaScript humans.",
+  "main": "src/index.js",
+  "scripts": {
+    "precommit": "npm t",
+    "precoverage": "rimraf coverage",
+    "coverage": "nyc report --reporter=lcov --reporter=html --reporter=text-summary",
+    "pretest": "eslint --config .eslint.json src/*.js",
+    "test": "nyc mocha tests/**.js --require babel-register",
+    "posttest": "npm run -s coverage",
+    "report": "cat ./coverage/lcov.info | codecov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agzeri/ramdish.git"
+  },
+  "author": "Mr R <@agzeri>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/agzeri/ramdish/issues"
+  },
+  "homepage": "https://github.com/agzeri/ramdish#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "codecov": "^3.0.1",
+    "eslint": "^4.19.1",
+    "husky": "^0.14.3",
+    "mocha": "^5.1.1",
+    "nyc": "^11.7.1",
+    "rimraf": "^2.6.2"
+  },
+  "nyc": {
+    "exclude": [
+      "tests/"
+    ]
+  }
+}
