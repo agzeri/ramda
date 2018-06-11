@@ -5,6 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "precommit": "npm t",
+    "prebuild": "rimraf dist",
+    "build": "webpack --mode development",
     "precoverage": "rimraf coverage",
     "coverage": "nyc report --reporter=lcov --reporter=html --reporter=text-summary",
     "docs": "jsdoc src -d docs",
@@ -25,7 +27,8 @@
   "homepage": "https://github.com/agzeri/ramdish#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.6.1",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
     "chai": "^4.1.2",
     "codecov": "^3.0.1",
     "eslint": "^4.19.1",
@@ -33,7 +36,9 @@
     "jsdoc": "^3.5.5",
     "mocha": "^5.1.1",
     "nyc": "^11.7.1",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.3"
   },
   "nyc": {
     "exclude": [

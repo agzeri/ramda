@@ -1,1 +1,5 @@
-export default app => app;
+import forEach from './forEach';
+
+export default {
+  forEach
+};
