@@ -12,7 +12,8 @@ export default {
     filename: CONFIG.FILENAME,
     library: CONFIG.NAME,
     libraryTarget: 'umd',
-    umdNamedDefine: true
+    umdNamedDefine: true,
+    libraryExport: 'default'
   },
   module: {
     rules: [
