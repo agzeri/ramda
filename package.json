@@ -9,6 +9,7 @@
     "build": "webpack --mode development",
     "precoverage": "rimraf coverage",
     "coverage": "nyc report --reporter=lcov --reporter=html --reporter=text-summary",
+    "predocs": "rimraf docs",
     "docs": "jsdoc src -d docs",
     "pretest": "eslint --config .eslint.json src/*.js",
     "test": "nyc mocha tests/**.js --require babel-register",
