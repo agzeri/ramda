@@ -13,13 +13,16 @@ describe('unless :: High Order Function', () => {
   });
 
   it('should accept two parameters', () => {
-    expect(() => { unless(); }).to.throw('Invalid: You should provide two parameters (predicate, function).');
+    const withEmptyPredicate = unless();
+
+    expect(() => { withEmptyPredicate(); }).to.throw('Invalid: You should provide two parameters (predicate, function).');
   });
 
   it('should callback have been called when first param is an expression', () => {
     const done = sinon.spy();
+    const withPredicateAsExpression = unless(1 > 2);
 
-    unless(1 > 2, done);
+    withPredicateAsExpression(done);
 
     expect(done).to.have.been.calledOnce;
   });
@@ -28,27 +31,43 @@ describe('unless :: High Order Function', () => {
     const isEven = number => number % 2 === 0;
     const done = sinon.spy();
 
-    unless(isEven(3), done);
+    const isNotEven = unless(isEven(3));
+    isNotEven(done);
 
     expect(done).to.have.been.calledOnce;
   });
 
   it('should accept a third parameter to run when condition is false', () => {
     const done = sinon.spy();
+    const oneGreaterThanTwo = unless(1 < 2);
 
-    unless(1 < 2, () => {}, done);
+    oneGreaterThanTwo(() => {}, done);
 
     expect(done).to.have.been.calledOnce;
   });
 
-  it('should work with other functions like `forEach`', () => {
-    const isOdd = number => !(number % 2);
+  it('should run “twice” looking for spaces in [1, “”, “”]', () => {
     const done = sinon.spy();
 
-    forEach([1, 2, 3], number => {
-      unless(isOdd(number), done);
+    forEach([1, '', ''], number => {
+      const anEmptySpace = unless(number);
+
+      anEmptySpace(done);
     });
 
     expect(done).to.have.been.callCount(2);
+  });
+
+  it('should work with other functions like `forEach`', () => {
+    const isLetter = char => typeof char !== 'number';
+    const done = sinon.spy();
+
+    forEach([1, 'a', 2, 'b', '3', 3, 4], char => {
+      const onlyNumbers = unless(isLetter(char));
+
+      onlyNumbers(done);
+    });
+
+    expect(done).to.have.been.callCount(4);
   });
 });
